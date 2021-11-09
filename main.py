@@ -232,6 +232,7 @@ def s3TimeDecrease():
 
 def start():
     global countDown
+    global isOff
 
     if modeList.get() == "Select a Mode" or detergentList.get() == "Select a Detergent":
         if modeList.get() != "Select a Mode" and detergentList.get() == "Select a Detergent":
@@ -313,12 +314,12 @@ def start():
                         dValveTCount -= 1
                         dValveTime.set(dValveTCount)
 
-                        if secondTCount < 1:
-                            secondTCount += 60
-                            minuteTCount -= 1
                         if minuteTCount < 0:
                             minuteTCount += 60
                             hourTCount -= 1
+                        if secondTCount < 1:
+                            secondTCount += 60
+                            minuteTCount -= 1
                         secondTCount -= 1
                         hour.set(hourTCount)
                         minute.set(minuteTCount)
@@ -347,12 +348,13 @@ def start():
                         wValveTCount -= 1
                         wValveTime.set(wValveTCount)
 
-                        if secondTCount < 1:
-                            secondTCount += 60
-                            minuteTCount -= 1
                         if minuteTCount < 0:
                             minuteTCount += 60
                             hourTCount -= 1
+                        if secondTCount < 1:
+                            secondTCount += 60
+                            minuteTCount -= 1
+
                         secondTCount -= 1
 
                         hour.set(hourTCount)
@@ -372,19 +374,24 @@ def start():
                         root.update()
                         time.sleep(0.01)
 
-                        if secondTCount < 1:
-                            secondTCount += 60
-                            minuteTCount -= 1
+                        if (minuteTCount < confS2Time + confS3Time or minuteTCount == 0) and hourTCount > 0:
+                            confS1Time = int((60+minuteTCount)-confS2Time-confS3Time)
+                        else:
+                            confS1Time = minuteTCount - confS2Time - confS3Time
+
                         if minuteTCount < 0:
                             minuteTCount += 60
                             hourTCount -= 1
+                        if secondTCount < 1:
+                            secondTCount += 60
+                            minuteTCount -= 1
+                            confS1Time -= 1
+
                         secondTCount -= 1
 
                         hour.set(hourTCount)
                         minute.set(minuteTCount)
                         second.set(secondTCount)
-
-                        confS1Time = minuteTCount - confS2Time - confS3Time
 
                         if confS1Time == 0:
                             confirmS1Time.set("<1")
@@ -407,12 +414,12 @@ def start():
                         root.update()
                         time.sleep(0.01)
 
-                        if secondTCount < 1:
-                            secondTCount += 60
-                            minuteTCount -= 1
                         if minuteTCount < 0:
                             minuteTCount += 60
                             hourTCount -= 1
+                        if secondTCount < 1:
+                            secondTCount += 60
+                            minuteTCount -= 1
 
                         secondTCount -= 1
                         hour.set(hourTCount)
@@ -513,12 +520,44 @@ def start():
 
                 additionalInfoLabel.configure(text="Informative advices will be stated here.")
             else:
-                countDown = False
-                StopButton.configure(state='disabled')
-                PowerButton.configure(state='normal')
-                doorState.configure(text='UNLOCKED')
-                additionalInfoLabel.configure(text="Washing process is finished.\nPlease press the power button to shut down the machine.")
-                pass
+                countDown=False
+
+                StartButton.configure(state='disable')
+                ResetButton.configure(state='disable')
+                modeList.configure(state='disable')
+                detergentList.configure(state='disable')
+                s1PlusButton.configure(state='disable')
+                s1MinusButton.configure(state='disable')
+                s2PlusButton.configure(state='disable')
+                s2MinusButton.configure(state='disable')
+                s3PlusButton.configure(state='disable')
+                s3MinusButton.configure(state='disable')
+                StopButton.configure(state="disabled")
+
+                selectedM.set("Select a Mode")
+                selectedD.set("Select a Detergent")
+                s1TimeCount.set(5)
+                s2TimeCount.set(5)
+                s3TimeCount.set(5)
+
+                selectedMode.configure(text="Awaiting Selection")
+                selectedDetergent.configure(text="Awaiting Selection")
+
+                confirmS1Time.set(0)
+                confirmS2Time.set(0)
+                confirmS3Time.set(0)
+
+                dValveTime.set(0)
+                wValveTime.set(0)
+
+                second.set(0)
+                minute.set(0)
+                hour.set(0)
+
+                additionalInfoLabel.configure(text="Machine Offline")
+
+                PowerButton.configure(image=smallPowerOffIcon, state='normal')
+                isOff = True
         else:
             pass
 
