@@ -324,7 +324,6 @@ def start():
                         hour.set(hourTCount)
                         minute.set(minuteTCount)
                         second.set(secondTCount)
-
                     else:
                         break
                 dImage.configure(image=smalldValveClosed)
@@ -400,7 +399,6 @@ def start():
                         else:
                             confirmS1Time.set(confS1Time)
                     else:
-                        R1.configure(state='disabled')
                         break
                 R1.deselect()
                 R1.configure(state='disabled')
@@ -434,7 +432,6 @@ def start():
                         else:
                             confirmS2Time.set(confS2Time)
                     else:
-                        R2.configure(state='disabled')
                         break
                 R2.deselect()
                 R2.configure(state='disabled')
@@ -473,7 +470,6 @@ def start():
                         else:
                             second.set(secondTCount)
                     else:
-                        R3.configure(state='disabled')
                         break
                 R3.deselect()
                 R3.configure(state='disabled')
@@ -554,6 +550,8 @@ def start():
                 minute.set(0)
                 hour.set(0)
 
+                doorState.configure(text="UNLOCKED")
+
                 additionalInfoLabel.configure(text="Machine Offline")
 
                 PowerButton.configure(image=smallPowerOffIcon, state='normal')
@@ -576,7 +574,6 @@ def cont():
         additionalInfoLabel.configure(text="Continued.Washing machine is running.\nPlease wait until the time is up.")
     else:
         countDown = False
-        pass
 
 
 def reset():
@@ -619,9 +616,9 @@ def reset():
 
 def stop():
     global countDown
-    emergenncy = messagebox.askquestion("Stop Confirmation", "Stop immediately?")
+    emergency = messagebox.askquestion("Stop Confirmation", "Stop immediately?")
 
-    if emergenncy == 'yes':
+    if emergency == 'yes':
         countDown = False
 
         ResetButton.configure(state='normal')
@@ -635,8 +632,13 @@ def stop():
         R3.configure(state='disabled')
 
         doorState.configure(text='UNLOCKED')
-    else:
-        pass
+
+    while not countDown:
+        root.after(1000)
+        root.update()
+
+
+
 
 
 def modeSelect(event):
@@ -870,3 +872,5 @@ infoFrame.grid(row=6, columnspan=4, sticky='nesw', padx=10, pady=10)
 additionalInfoLabel.grid(row=1, column=1, padx=5, pady=5)
 
 mainloop()
+
+# Additional Info
