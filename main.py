@@ -182,6 +182,7 @@ def power():
             pass
 
 
+# Stage 1's Buttons
 def s1TimeIncrease():
     if s1TimeCount.get() >= 25:
         messagebox.showwarning("Maximum Value Reached", "The maximum amount of time for washing is 25 minutes only")
@@ -198,6 +199,7 @@ def s1TimeDecrease():
         s1TimeCount.set(s1TimeCount.get() - 5)
 
 
+# Stage 2's Buttons
 def s2TimeIncrease():
     if s2TimeCount.get() >= 25:
         messagebox.showwarning("Maximum Value Reached", "The maximum amount of time for rinsing is 25 minutes only")
@@ -214,6 +216,7 @@ def s2TimeDecrease():
         s2TimeCount.set(s2TimeCount.get() - 5)
 
 
+# Stage 3's Buttons
 def s3TimeIncrease():
     if s3TimeCount.get() >= 25:
         messagebox.showwarning("Maximum Value Reached", "The maximum amount of time for spinning is 25 minutes only")
@@ -230,6 +233,7 @@ def s3TimeDecrease():
         s3TimeCount.set(s3TimeCount.get() - 5)
 
 
+# Start function
 def start():
     global countDown
     global isOff
@@ -560,6 +564,7 @@ def start():
             pass
 
 
+# Resume Function
 def cont():
     global countDown
 
@@ -576,9 +581,11 @@ def cont():
         countDown = False
 
 
+# Reset Function
 def reset():
     global countDown
     countDown = False
+    root.update()
     PowerButton.configure(state='normal')
     StartButton.configure(state='normal')
     modeList.configure(state='readonly')
@@ -590,6 +597,8 @@ def reset():
     s3PlusButton.configure(state='normal')
     s3MinusButton.configure(state='normal')
     ContinueButton.configure(state='disabled')
+    wImage.configure(image=smallwValveClosed)
+    dImage.configure(image=smalldValveClosed)
 
     selectedM.set("Select a Mode")
     selectedD.set("Select a Detergent")
@@ -614,6 +623,7 @@ def reset():
     additionalInfoLabel.configure(text="Informative advices will be stated here.")
 
 
+# Stop Function
 def stop():
     global countDown
     emergency = messagebox.askquestion("Stop Confirmation", "Stop immediately?")
@@ -638,9 +648,7 @@ def stop():
         root.update()
 
 
-
-
-
+# Mode Select Function
 def modeSelect(event):
     selected = event.widget.get()
 
@@ -874,3 +882,6 @@ additionalInfoLabel.grid(row=1, column=1, padx=5, pady=5)
 mainloop()
 
 # Additional Info
+# Programmer Name: Ooi Zi Sheng | Student ID: 0202150
+# Subject Code and Name: CPR3014 Programming for IS
+# Teacher's Name: Dr. Ooi Woi Seng
