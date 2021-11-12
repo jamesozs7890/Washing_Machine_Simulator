@@ -1,3 +1,4 @@
+# Before executing the program. Remember to put the image folder in (C:) drive. Thank you
 import tkinter.font
 import time
 from tkinter import *
@@ -50,53 +51,53 @@ countDown = False
 
 # Images
 powerOnIcon = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\PowerButtonOn.png")
+    file=r"C:\Images\PowerButtonOn.png")
 smallPowerOnIcon = powerOnIcon.subsample(8, 8)
 
 powerOffIcon = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\PowerButton.png")
+    file=r"C:\Images\PowerButton.png")
 smallPowerOffIcon = powerOffIcon.subsample(8, 8)
 
 resetIcon = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\resetButtonWhite.png")
+    file=r"C:\Images\resetButtonWhite.png")
 smallResetIcon = resetIcon.subsample(12, 12)
 startIcon = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\startButtonWhite.png")
+    file=r"C:\Images\startButtonWhite.png")
 smallStartIcon = startIcon.subsample(12, 12)
 
 eStop = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\emergencyStop.png")
+    file=r"C:\Images\emergencyStop.png")
 smalleStop = eStop.subsample(8, 8)
 contProcess = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\continueButton.png")
+    file=r"C:\Images\continueButton.png")
 smallcontProcess = contProcess.subsample(8, 8)
 
 wValveOpen1 = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\wValveOpen1.png")
+    file=r"C:\Images\wValveOpen1.png")
 smallwValveOpen1 = wValveOpen1.subsample(5, 5)
 wValveOpen2 = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\wValveOpen2.png")
+    file=r"C:\Images\wValveOpen2.png")
 smallwValveOpen2 = wValveOpen2.subsample(5, 5)
 wValveOpen3 = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\wValveOpen3.png")
+    file=r"C:\Images\wValveOpen3.png")
 smallwValveOpen3 = wValveOpen3.subsample(5, 5)
 
 wValveClose = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\wValveClose.png")
+    file=r"C:\Images\wValveClose.png")
 smallwValveClosed = wValveClose.subsample(5, 5)
 
 dValveOpen1 = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\DetergentOpen1.png")
+    file=r"C:\Images\DetergentOpen1.png")
 smalldValveOpen1 = dValveOpen1.subsample(5, 5)
 dValveOpen2 = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\DetergentOpen2.png")
+    file=r"C:\Images\DetergentOpen2.png")
 smalldValveOpen2 = dValveOpen2.subsample(5, 5)
 dValveOpen3 = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\DetergentOpen3.png")
+    file=r"C:\Images\DetergentOpen3.png")
 smalldValveOpen3 = dValveOpen3.subsample(5, 5)
 
 dValveClose = PhotoImage(
-    file=r"C:\Users\James\Desktop\Bachelor's Sem 2\Programming for IS\Assignment\Images\DetergentClosed.png")
+    file=r"C:\Images\DetergentClosed.png")
 smalldValveClosed = dValveClose.subsample(5, 5)
 
 # font
@@ -881,7 +882,6 @@ additionalInfoLabel.grid(row=1, column=1, padx=5, pady=5)
 
 mainloop()
 
-# Additional Info
 # Programmer Name: Ooi Zi Sheng | Student ID: 0202150
 # Subject Code and Name: CPR3014 Programming for IS
 # Teacher's Name: Dr. Ooi Woi Seng
